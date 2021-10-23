@@ -20,27 +20,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.icejuice.cn","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
+<meta name="description" content="离线部署pureftpd+nignx遇到的坑题外话：避免大家再次采坑，节约时间，才有了这个系列的帖子，希望能有帮助。 pure-ftpd版本不建议选择1.0.49pure-ftpd-1.0.49 配置文件不支持charset属性，建议使用pure-ftpd-1.0.47 下图是网友的解决乱码的方案，但不适用于1.0.49: 离线安装不推荐，建议联网安装本次配置服务器受限于服务器是私有云，无法访问公">
 <meta property="og:type" content="article">
-<meta property="og:title" content="昌江-儋州-澄迈-西海岸往返三日骑行">
-<meta property="og:url" content="http://blog.icejuice.cn/2021/10/17/bike/chengmai/index.html">
+<meta property="og:title" content="基于centos7部署ftp服务器(2)--部署pureftpd+nignx">
+<meta property="og:url" content="http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_2_server/index.html">
 <meta property="og:site_name" content="南国的云彩">
-<meta property="og:description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
+<meta property="og:description" content="离线部署pureftpd+nignx遇到的坑题外话：避免大家再次采坑，节约时间，才有了这个系列的帖子，希望能有帮助。 pure-ftpd版本不建议选择1.0.49pure-ftpd-1.0.49 配置文件不支持charset属性，建议使用pure-ftpd-1.0.47 下图是网友的解决乱码的方案，但不适用于1.0.49: 离线安装不推荐，建议联网安装本次配置服务器受限于服务器是私有云，无法访问公">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-17T10:29:33.000Z">
-<meta property="article:modified_time" content="2021-10-17T10:49:59.577Z">
+<meta property="og:image" content="http://pic.icejuice.cn/20211023192043.png">
+<meta property="article:published_time" content="2021-10-23T09:59:22.503Z">
+<meta property="article:modified_time" content="2021-10-23T11:32:33.196Z">
 <meta property="article:author" content="青菜萝卜">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://pic.icejuice.cn/20211023192043.png">
 
 
-<link rel="canonical" href="http://blog.icejuice.cn/2021/10/17/bike/chengmai/">
+<link rel="canonical" href="http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_2_server/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.icejuice.cn/2021/10/17/bike/chengmai/","path":"2021/10/17/bike/chengmai/","title":"昌江-儋州-澄迈-西海岸往返三日骑行"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_2_server/","path":"2021/10/23/maintain/211022_ftp_2_server/","title":"基于centos7部署ftp服务器(2)--部署pureftpd+nignx"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>昌江-儋州-澄迈-西海岸往返三日骑行 | 南国的云彩</title>
+<title>基于centos7部署ftp服务器(2)--部署pureftpd+nignx | 南国的云彩</title>
   
 
 
@@ -95,7 +97,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -108,6 +110,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2pureftpd-nignx"><span class="nav-number">1.</span> <span class="nav-text">离线部署pureftpd+nignx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91"><span class="nav-number">1.1.</span> <span class="nav-text">遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pure-ftpd%E7%89%88%E6%9C%AC%E4%B8%8D%E5%BB%BA%E8%AE%AE%E9%80%89%E6%8B%A91-0-49"><span class="nav-number">1.1.1.</span> <span class="nav-text">pure-ftpd版本不建议选择1.0.49</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E4%B8%8D%E6%8E%A8%E8%8D%90%EF%BC%8C%E5%BB%BA%E8%AE%AE%E8%81%94%E7%BD%91%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.2.</span> <span class="nav-text">离线安装不推荐，建议联网安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">1.2.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,7 +167,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://blog.icejuice.cn/2021/10/17/bike/chengmai/">
+    <link itemprop="mainEntityOfPage" href="http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_2_server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          昌江-儋州-澄迈-西海岸往返三日骑行
+          基于centos7部署ftp服务器(2)--部署pureftpd+nignx
         </h1>
 
         <div class="post-meta-container">
@@ -189,7 +192,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-10-17 18:29:33 / 修改时间：18:49:59" itemprop="dateCreated datePublished" datetime="2021-10-17T18:29:33+08:00">2021-10-17</time>
+      <time title="创建时间：2021-10-23 17:59:22 / 修改时间：19:32:33" itemprop="dateCreated datePublished" datetime="2021-10-23T17:59:22+08:00">2021-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -197,7 +200,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%AA%91%E8%A1%8C/" itemprop="url" rel="index"><span itemprop="name">骑行</span></a>
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">系统运维</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E5%B7%A5%E5%85%B7%E7%AE%B1/" itemprop="url" rel="index"><span itemprop="name">工具箱</span></a>
         </span>
     </span>
 
@@ -211,7 +218,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="离线部署pureftpd-nignx"><a href="#离线部署pureftpd-nignx" class="headerlink" title="离线部署pureftpd+nignx"></a>离线部署pureftpd+nignx</h1><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p><code>题外话：避免大家再次采坑，节约时间，才有了这个系列的帖子，希望能有帮助。</code></p>
+<h3 id="pure-ftpd版本不建议选择1-0-49"><a href="#pure-ftpd版本不建议选择1-0-49" class="headerlink" title="pure-ftpd版本不建议选择1.0.49"></a>pure-ftpd版本不建议选择1.0.49</h3><p>pure-ftpd-1.0.49 配置文件不支持charset属性，建议使用pure-ftpd-1.0.47</p>
+<p>下图是网友的解决乱码的方案，但不适用于1.0.49:<br><img src="http://pic.icejuice.cn/20211023192043.png" alt="pureftp显示乱码问题"></p>
+<h3 id="离线安装不推荐，建议联网安装"><a href="#离线安装不推荐，建议联网安装" class="headerlink" title="离线安装不推荐，建议联网安装"></a>离线安装不推荐，建议联网安装</h3><p>本次配置服务器受限于服务器是私有云，无法访问公网，所有安装包及依赖包都需要靠手动下载后上传服务器再安装。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cnjavahome/p/8463896.html">CentOS7 安装 Pure-ftpd-沐小悠</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1818653">CentOS7 离线安装 Nginx 1.6.2 和 反向代理</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/achi010/article/details/106392040">CentOS 7.5 离线安装 Nginx 1.18</a></p>
+
     </div>
 
     
@@ -224,13 +238,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/17/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2021/10/22/maintain/211022_ftp_3_user/" rel="prev" title="基于centos7部署ftp服务器(3)--用户如何使用Ftp共享文件">
+                  <i class="fa fa-chevron-left"></i> 基于centos7部署ftp服务器(3)--用户如何使用Ftp共享文件
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/22/maintain/211022_ftp_3_user/" rel="next" title="基于centos7部署ftp服务器(3)--用户如何使用Ftp共享文件">
-                  基于centos7部署ftp服务器(3)--用户如何使用Ftp共享文件 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/10/23/maintain/211022_ftp_1_compare/" rel="next" title="基于centos7部署ftp服务器(1)--ftp服务器选型">
+                  基于centos7部署ftp服务器(1)--ftp服务器选型 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

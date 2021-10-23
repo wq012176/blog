@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.icejuice.cn","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="单车骑行游南国，软件工程建项目">
+<meta name="description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="南国的云彩">
 <meta property="og:url" content="http://blog.icejuice.cn/index.html">
 <meta property="og:site_name" content="南国的云彩">
-<meta property="og:description" content="单车骑行游南国，软件工程建项目">
+<meta property="og:description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="青菜萝卜">
 <meta name="twitter:card" content="summary">
@@ -112,18 +112,18 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">青菜萝卜</p>
-  <div class="site-description" itemprop="description">单车骑行游南国，软件工程建项目</div>
+  <div class="site-description" itemprop="description">单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
   </nav>
@@ -161,12 +161,327 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_1_compare/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="青菜萝卜">
+      <meta itemprop="description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="南国的云彩">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/maintain/211022_ftp_1_compare/" class="post-title-link" itemprop="url">基于centos7部署ftp服务器(1)--ftp服务器选型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-23 18:45:30 / 修改时间：19:13:22" itemprop="dateCreated datePublished" datetime="2021-10-23T18:45:30+08:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">系统运维</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E5%B7%A5%E5%85%B7%E7%AE%B1/" itemprop="url" rel="index"><span itemprop="name">工具箱</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="ftp服务器选型"><a href="#ftp服务器选型" class="headerlink" title="ftp服务器选型"></a>ftp服务器选型</h1><h2 id="ftp知识科普"><a href="#ftp知识科普" class="headerlink" title="ftp知识科普"></a>ftp知识科普</h2><p>FTP-文件传输协议，Very Secure FTP Server</p>
+<blockquote>
+<p>Ftp会话时采用了两种通道（连接方式）：</p>
+<p>1）控制通道：与Ftp服务器进行沟通的通道，链接Ftp发送ftp指令都是通过控制通道来完成的。端口为21，用于发送FTP命令信息。</p>
+<p>2）数据通道：数据通道和Ftp服务器进行文件传输或则列表的通道 ，端口为20，用于上传下载数据。</p>
+</blockquote>
+<p><img src="http://pic.icejuice.cn/1634986463(1).jpg" alt="ftp工作原理"></p>
+<p>Ftp协议中控制连接均是由客户端发起，而数据连接有两种工作方式：Port和Pasv方式</p>
+<blockquote>
+<p>Port模式（主动模式）：就是服务端从20端口主动向客户端发起连接</p>
+<p>Pasv模式（被动模式）：就是服务端在指定范围内的某个端口被动等待客户端发起连接</p>
+</blockquote>
+<p><strong>结论：windows资源管理器ftp客户端仅支持被动模式，因此服务器按pasv模式配置</strong></p>
+<h2 id="软件评估-vsftpd-vs-ProFTPd"><a href="#软件评估-vsftpd-vs-ProFTPd" class="headerlink" title="软件评估 vsftpd vs ProFTPd"></a>软件评估 vsftpd vs ProFTPd</h2><blockquote>
+<p>直接引用网友的结论：</p>
+<p>如果您想要有灵活的配置选项、大量的外部模块的服务器：ProFTPd</p>
+<p>如果您只有少量用户，并想要一个简单，安全的FTP服务器：pureftpd</p>
+<p>如果要用于大量用户的FTP服务器：vsftpd</p>
+<p>（链接放到参考文献）</p>
+</blockquote>
+<p><strong>结论：本次服务器配置最终采用pureftpd软件</strong></p>
+<h2 id="弃用vsftpd的原因是乱码问题无法解决"><a href="#弃用vsftpd的原因是乱码问题无法解决" class="headerlink" title="弃用vsftpd的原因是乱码问题无法解决"></a>弃用vsftpd的原因是乱码问题无法解决</h2><blockquote>
+<p>网友的反馈：</p>
+<p>VSFTPD不支持编码的转换，默认是UTF-8编码。<br>Windows资源管理器处理FTP时用的编码是ANSI（eg GBK BIG5 SHIFT-JIS）而不是UTF-8便导致编码问题。</p>
+</blockquote>
+<p><img src="http://pic.icejuice.cn/20211023183613.png" alt="20211023183613"></p>
+<p>喜欢折腾的朋友可以尝试网友推荐的方法（链接放到参考文献）:</p>
+<p>这个方法不需要打补丁，而是使用fuse-convmvfs虚拟一个文件系统的方法。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="https://www.cnweed.com/archives/3537/">评估的FTP服务器：ProFTPd vs PureFTPd vs vsftpd</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.pluskid.org/?p=344">让 Linux 下的 FTP 服务器支持 GBK 编码</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_2_server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="青菜萝卜">
+      <meta itemprop="description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="南国的云彩">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/23/maintain/211022_ftp_2_server/" class="post-title-link" itemprop="url">基于centos7部署ftp服务器(2)--部署pureftpd+nignx</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-23 17:59:22 / 修改时间：19:32:33" itemprop="dateCreated datePublished" datetime="2021-10-23T17:59:22+08:00">2021-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">系统运维</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E5%B7%A5%E5%85%B7%E7%AE%B1/" itemprop="url" rel="index"><span itemprop="name">工具箱</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="离线部署pureftpd-nignx"><a href="#离线部署pureftpd-nignx" class="headerlink" title="离线部署pureftpd+nignx"></a>离线部署pureftpd+nignx</h1><h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p><code>题外话：避免大家再次采坑，节约时间，才有了这个系列的帖子，希望能有帮助。</code></p>
+<h3 id="pure-ftpd版本不建议选择1-0-49"><a href="#pure-ftpd版本不建议选择1-0-49" class="headerlink" title="pure-ftpd版本不建议选择1.0.49"></a>pure-ftpd版本不建议选择1.0.49</h3><p>pure-ftpd-1.0.49 配置文件不支持charset属性，建议使用pure-ftpd-1.0.47</p>
+<p>下图是网友的解决乱码的方案，但不适用于1.0.49:<br><img src="http://pic.icejuice.cn/20211023192043.png" alt="pureftp显示乱码问题"></p>
+<h3 id="离线安装不推荐，建议联网安装"><a href="#离线安装不推荐，建议联网安装" class="headerlink" title="离线安装不推荐，建议联网安装"></a>离线安装不推荐，建议联网安装</h3><p>本次配置服务器受限于服务器是私有云，无法访问公网，所有安装包及依赖包都需要靠手动下载后上传服务器再安装。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cnjavahome/p/8463896.html">CentOS7 安装 Pure-ftpd-沐小悠</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1818653">CentOS7 离线安装 Nginx 1.6.2 和 反向代理</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/achi010/article/details/106392040">CentOS 7.5 离线安装 Nginx 1.18</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.icejuice.cn/2021/10/22/maintain/211022_ftp_3_user/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="青菜萝卜">
+      <meta itemprop="description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="南国的云彩">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/22/maintain/211022_ftp_3_user/" class="post-title-link" itemprop="url">基于centos7部署ftp服务器(3)--用户如何使用Ftp共享文件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-22 08:36:41" itemprop="dateCreated datePublished" datetime="2021-10-22T08:36:41+08:00">2021-10-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-23 19:35:57" itemprop="dateModified" datetime="2021-10-23T19:35:57+08:00">2021-10-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">系统运维</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E5%B7%A5%E5%85%B7%E7%AE%B1/" itemprop="url" rel="index"><span itemprop="name">工具箱</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="使用Ftp工具来共享文件（用户操作手册）"><a href="#使用Ftp工具来共享文件（用户操作手册）" class="headerlink" title="使用Ftp工具来共享文件（用户操作手册）"></a>使用Ftp工具来共享文件（用户操作手册）</h1><h2 id="ftp科普"><a href="#ftp科普" class="headerlink" title="ftp科普"></a>ftp科普</h2><p>ftp即文件共享的意思，就是在网上的某个地方，创建了一个文件共享仓库。可以将自己的文件上传至远端的仓库，其他人就可以下载你上次的文件。 </p>
+<h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><blockquote>
+<ol>
+<li>连接到远端的ftp服务器</li>
+<li>如果是需要上传文件，本地编辑好文件后，直接复制到相应的目录中</li>
+<li>如果是需下载文件，将远端服务器的文件复制到本地即可</li>
+</ol>
+</blockquote>
+<h2 id="如何访问ftp服务器"><a href="#如何访问ftp服务器" class="headerlink" title="如何访问ftp服务器"></a>如何访问ftp服务器</h2><h3 id="方法1：使用windows资源管理器访问"><a href="#方法1：使用windows资源管理器访问" class="headerlink" title="方法1：使用windows资源管理器访问"></a>方法1：使用windows资源管理器访问</h3><blockquote>
+<p>此方法适应于电脑操作不是很熟练，也不想折腾的用户。</p>
+</blockquote>
+<p>step1：打开资源管理器，在输入框写入ftp服务器地址</p>
+<p><img src="http://pic.icejuice.cn/20211023172900.png" alt="操作步骤1"></p>
+<p>step2：输入分配的账号密码，即可进入ftp服务器</p>
+<p><img src="http://pic.icejuice.cn/20211023173218.png" alt="步骤2"></p>
+<p>注意：操作类似打开本地文件夹，但是还是有区别的：<br><img src="http://pic.icejuice.cn/20211023171725.png" alt="右击ftp服务器上某文件"></p>
+<p>step3（可选，但强烈推荐）：将ftp映射至windows本地磁盘</p>
+<p><code>背景</code>：针对经常使用ftp传输文件时，每次使用前都需要录入地址、账号太繁琐，建立映射后，可像打开本地磁盘一样方便。</p>
+<p>先上最终效果图：<br><img src="http://pic.icejuice.cn/20211023174051.png" alt="20211023174051"></p>
+<p>step3.1： 点击<code>映射网络驱动器</code></p>
+<p><img src="http://pic.icejuice.cn/20211023174605.png" alt="20211023174605"></p>
+<p>step3.2：点击超链接<code>连接至可用于存储文档和图片的网站</code></p>
+<p><img src="http://pic.icejuice.cn/20211023174839.png" alt="20211023174839"></p>
+<p>step3.3：输入ftp地址</p>
+<p>注意输入格式： ftp:// + 服务器地址</p>
+<p><img src="http://pic.icejuice.cn/20211023175325.png" alt="20211023175325"></p>
+<p>step3.4：输入账号</p>
+<p><img src="http://pic.icejuice.cn/20211023175457.png" alt="20211023175457"></p>
+<p>step3.5：显示的名称可以自定义，也可用默认的名称</p>
+<p><img src="http://pic.icejuice.cn/20211023175544.png" alt="20211023175544"></p>
+<p>step3.6：点击<code>完成</code>后即可出现最开始的效果图</p>
+<h3 id="方法2：使用Filezilla工具访问"><a href="#方法2：使用Filezilla工具访问" class="headerlink" title="方法2：使用Filezilla工具访问"></a>方法2：使用Filezilla工具访问</h3><p>(注意：方法1和方法2选一种即可，不用两种都用)</p>
+<blockquote>
+<p>此方法适应于懂电脑知识，而且喜欢研究技术的小伙伴们:)</p>
+</blockquote>
+<p>首先下载Filezilla工具</p>
+<p>其次配置参数，即可连接（见下如）：</p>
+<p><img src="http://pic.icejuice.cn/20211023180342.png" alt="20211023180342"></p>
+<h3 id="方法3：通过浏览器浏览文件"><a href="#方法3：通过浏览器浏览文件" class="headerlink" title="方法3：通过浏览器浏览文件"></a>方法3：通过浏览器浏览文件</h3><p><code>注意</code>：此方法只能浏览、下载文件，无法上传文件（前两种方法可以浏览、下载、上传文件）</p>
+<p>打开浏览器，在地址框中输入服务器地址，输入账号后可查看远程文件清单：</p>
+<p><img src="http://pic.icejuice.cn/20211023182031.png" alt="20211023182031"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://blog.icejuice.cn/2021/10/17/bike/chengmai/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="青菜萝卜">
-      <meta itemprop="description" content="单车骑行游南国，软件工程建项目">
+      <meta itemprop="description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -239,7 +554,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="青菜萝卜">
-      <meta itemprop="description" content="单车骑行游南国，软件工程建项目">
+      <meta itemprop="description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -325,7 +640,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="青菜萝卜">
-      <meta itemprop="description" content="单车骑行游南国，软件工程建项目">
+      <meta itemprop="description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">

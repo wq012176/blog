@@ -20,27 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.icejuice.cn","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
+<meta name="description" content="ftp服务器选型ftp知识科普FTP-文件传输协议，Very Secure FTP Server  Ftp会话时采用了两种通道（连接方式）： 1）控制通道：与Ftp服务器进行沟通的通道，链接Ftp发送ftp指令都是通过控制通道来完成的。端口为21，用于发送FTP命令信息。 2）数据通道：数据通道和Ftp服务器进行文件传输或则列表的通道 ，端口为20，用于上传下载数据。   Ftp协议中控制连接均是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="昌江-儋州-澄迈-西海岸往返三日骑行">
-<meta property="og:url" content="http://blog.icejuice.cn/2021/10/17/bike/chengmai/index.html">
+<meta property="og:title" content="基于centos7部署ftp服务器(1)--ftp服务器选型">
+<meta property="og:url" content="http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_1_compare/index.html">
 <meta property="og:site_name" content="南国的云彩">
-<meta property="og:description" content="单车骑行游南国，软件工程建项目。基于java的应用软件项目开发，以及基于私有云平台的系统运维，涉及linux、mysql、git、nginx、jekins、ftp等。">
+<meta property="og:description" content="ftp服务器选型ftp知识科普FTP-文件传输协议，Very Secure FTP Server  Ftp会话时采用了两种通道（连接方式）： 1）控制通道：与Ftp服务器进行沟通的通道，链接Ftp发送ftp指令都是通过控制通道来完成的。端口为21，用于发送FTP命令信息。 2）数据通道：数据通道和Ftp服务器进行文件传输或则列表的通道 ，端口为20，用于上传下载数据。   Ftp协议中控制连接均是">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-17T10:29:33.000Z">
-<meta property="article:modified_time" content="2021-10-17T10:49:59.577Z">
+<meta property="og:image" content="http://pic.icejuice.cn/1634986463(1).jpg">
+<meta property="og:image" content="http://pic.icejuice.cn/20211023183613.png">
+<meta property="article:published_time" content="2021-10-23T10:45:30.474Z">
+<meta property="article:modified_time" content="2021-10-23T11:13:22.588Z">
 <meta property="article:author" content="青菜萝卜">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://pic.icejuice.cn/1634986463(1).jpg">
 
 
-<link rel="canonical" href="http://blog.icejuice.cn/2021/10/17/bike/chengmai/">
+<link rel="canonical" href="http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_1_compare/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.icejuice.cn/2021/10/17/bike/chengmai/","path":"2021/10/17/bike/chengmai/","title":"昌江-儋州-澄迈-西海岸往返三日骑行"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_1_compare/","path":"2021/10/23/maintain/211022_ftp_1_compare/","title":"基于centos7部署ftp服务器(1)--ftp服务器选型"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>昌江-儋州-澄迈-西海岸往返三日骑行 | 南国的云彩</title>
+<title>基于centos7部署ftp服务器(1)--ftp服务器选型 | 南国的云彩</title>
   
 
 
@@ -95,7 +98,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -108,6 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ftp%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%89%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">ftp服务器选型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ftp%E7%9F%A5%E8%AF%86%E7%A7%91%E6%99%AE"><span class="nav-number">1.1.</span> <span class="nav-text">ftp知识科普</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AF%84%E4%BC%B0-vsftpd-vs-ProFTPd"><span class="nav-number">1.2.</span> <span class="nav-text">软件评估 vsftpd vs ProFTPd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%83%E7%94%A8vsftpd%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E6%97%A0%E6%B3%95%E8%A7%A3%E5%86%B3"><span class="nav-number">1.3.</span> <span class="nav-text">弃用vsftpd的原因是乱码问题无法解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">1.4.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,7 +168,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://blog.icejuice.cn/2021/10/17/bike/chengmai/">
+    <link itemprop="mainEntityOfPage" href="http://blog.icejuice.cn/2021/10/23/maintain/211022_ftp_1_compare/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -177,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          昌江-儋州-澄迈-西海岸往返三日骑行
+          基于centos7部署ftp服务器(1)--ftp服务器选型
         </h1>
 
         <div class="post-meta-container">
@@ -189,7 +193,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-10-17 18:29:33 / 修改时间：18:49:59" itemprop="dateCreated datePublished" datetime="2021-10-17T18:29:33+08:00">2021-10-17</time>
+      <time title="创建时间：2021-10-23 18:45:30 / 修改时间：19:13:22" itemprop="dateCreated datePublished" datetime="2021-10-23T18:45:30+08:00">2021-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -197,7 +201,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%AA%91%E8%A1%8C/" itemprop="url" rel="index"><span itemprop="name">骑行</span></a>
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">系统运维</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E5%B7%A5%E5%85%B7%E7%AE%B1/" itemprop="url" rel="index"><span itemprop="name">工具箱</span></a>
         </span>
     </span>
 
@@ -211,7 +219,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="ftp服务器选型"><a href="#ftp服务器选型" class="headerlink" title="ftp服务器选型"></a>ftp服务器选型</h1><h2 id="ftp知识科普"><a href="#ftp知识科普" class="headerlink" title="ftp知识科普"></a>ftp知识科普</h2><p>FTP-文件传输协议，Very Secure FTP Server</p>
+<blockquote>
+<p>Ftp会话时采用了两种通道（连接方式）：</p>
+<p>1）控制通道：与Ftp服务器进行沟通的通道，链接Ftp发送ftp指令都是通过控制通道来完成的。端口为21，用于发送FTP命令信息。</p>
+<p>2）数据通道：数据通道和Ftp服务器进行文件传输或则列表的通道 ，端口为20，用于上传下载数据。</p>
+</blockquote>
+<p><img src="http://pic.icejuice.cn/1634986463(1).jpg" alt="ftp工作原理"></p>
+<p>Ftp协议中控制连接均是由客户端发起，而数据连接有两种工作方式：Port和Pasv方式</p>
+<blockquote>
+<p>Port模式（主动模式）：就是服务端从20端口主动向客户端发起连接</p>
+<p>Pasv模式（被动模式）：就是服务端在指定范围内的某个端口被动等待客户端发起连接</p>
+</blockquote>
+<p><strong>结论：windows资源管理器ftp客户端仅支持被动模式，因此服务器按pasv模式配置</strong></p>
+<h2 id="软件评估-vsftpd-vs-ProFTPd"><a href="#软件评估-vsftpd-vs-ProFTPd" class="headerlink" title="软件评估 vsftpd vs ProFTPd"></a>软件评估 vsftpd vs ProFTPd</h2><blockquote>
+<p>直接引用网友的结论：</p>
+<p>如果您想要有灵活的配置选项、大量的外部模块的服务器：ProFTPd</p>
+<p>如果您只有少量用户，并想要一个简单，安全的FTP服务器：pureftpd</p>
+<p>如果要用于大量用户的FTP服务器：vsftpd</p>
+<p>（链接放到参考文献）</p>
+</blockquote>
+<p><strong>结论：本次服务器配置最终采用pureftpd软件</strong></p>
+<h2 id="弃用vsftpd的原因是乱码问题无法解决"><a href="#弃用vsftpd的原因是乱码问题无法解决" class="headerlink" title="弃用vsftpd的原因是乱码问题无法解决"></a>弃用vsftpd的原因是乱码问题无法解决</h2><blockquote>
+<p>网友的反馈：</p>
+<p>VSFTPD不支持编码的转换，默认是UTF-8编码。<br>Windows资源管理器处理FTP时用的编码是ANSI（eg GBK BIG5 SHIFT-JIS）而不是UTF-8便导致编码问题。</p>
+</blockquote>
+<p><img src="http://pic.icejuice.cn/20211023183613.png" alt="20211023183613"></p>
+<p>喜欢折腾的朋友可以尝试网友推荐的方法（链接放到参考文献）:</p>
+<p>这个方法不需要打补丁，而是使用fuse-convmvfs虚拟一个文件系统的方法。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="https://www.cnweed.com/archives/3537/">评估的FTP服务器：ProFTPd vs PureFTPd vs vsftpd</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.pluskid.org/?p=344">让 Linux 下的 FTP 服务器支持 GBK 编码</a></p>
+
     </div>
 
     
@@ -224,14 +262,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/17/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2021/10/23/maintain/211022_ftp_2_server/" rel="prev" title="基于centos7部署ftp服务器(2)--部署pureftpd+nignx">
+                  <i class="fa fa-chevron-left"></i> 基于centos7部署ftp服务器(2)--部署pureftpd+nignx
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/22/maintain/211022_ftp_3_user/" rel="next" title="基于centos7部署ftp服务器(3)--用户如何使用Ftp共享文件">
-                  基于centos7部署ftp服务器(3)--用户如何使用Ftp共享文件 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
